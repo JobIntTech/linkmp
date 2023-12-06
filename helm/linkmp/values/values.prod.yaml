@@ -1,0 +1,23 @@
+---
+
+application:
+  image:
+    pullPolicy: Always
+
+  annotations:
+    "sidecar.istio.io/proxyCPU": 50m
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 1Gi
+
+  MP_TOKEN: APP_USR-3459389918051534-091015-80daccb18b71d10da2acb3764a01b726__LD_LB__-192113402
+
+replicaCount: 1
+
+nodeSelector:
+  apps: "true"
