@@ -1,0 +1,28 @@
+{{- $availableEnvironments := list "prepro" "prod" }}
+{{- if has .Release.Namespace $availableEnvironments }}
+---
+
+kind: Gateway
+apiVersion: networking.istio.io/v1beta1
+metadata:
+  name: {{ template "application.fullname" . }}
+  labels:
+    {{- include "helm.labels" . | nindent 4 }}
+  annotations:
+    {{- include "helm.annotations" . | nindent 4 }}
+spec:
+  servers:
+    - hosts:
+        {{- if eq "prod" .Release.Namespace }}
+        - {{ .Values.istio.dnsPrefix }}.api.core.jobint.biz
+        {{- else if eq "prepro" .Release.Namespace }}
+        - {{ .Values.istio.dnsPrefix }}.prepro.api.core.jobint.biz
+        {{- end }}
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ilbgateway
+
+{{- end -}}

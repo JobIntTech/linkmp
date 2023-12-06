@@ -1,0 +1,77 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "application.fullname" . }}
+  labels:
+    {{- include "application.labels" . | indent 4 }}
+    {{- include "helm.labels" . | nindent 4 }}
+  annotations:
+    {{- include "helm.annotations" . | nindent 4 }}
+  {{- if .Values.deployment.annotations }}
+    {{- include "deployment.annotations" . | indent 4 }}
+  {{- end }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  strategy:
+    type: "RollingUpdate"
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 25%
+  selector:
+    matchLabels:
+      {{- include "application.labels" . | indent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "application.labels" . | indent 8 }}
+        {{- include "application.version.labels" . | indent 8 }}
+      {{- if .Values.application.annotations }}
+      annotations:
+        {{- include "application.annotations" . | indent 8 }}
+      {{- end }}
+    spec:
+      volumes:
+        - name: timezone
+          hostPath:
+            path: /usr/share/zoneinfo/US/Eastern
+
+      {{- if .Values.nodeSelector }}
+      nodeSelector:
+        {{ toYaml .Values.nodeSelector | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: "{{ .Values.application.name }}"
+          image: {{ .Values.application.image.repository }}:{{ .Chart.AppVersion }}
+          imagePullPolicy: {{ .Values.application.image.pullPolicy }}
+          ports:
+            - name: http-{{ .Values.application.port }}
+              containerPort: {{ .Values.application.port }}
+              protocol: TCP
+          volumeMounts:
+            - name: timezone
+              mountPath: /etc/localtime
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.name
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.namespace
+            - name: CONTAINER_NAME
+              value: "{{ .Values.application.name }}"
+            - name: CLUSTER_NAME
+              value: "{{ .Values.kubernetes.name }}"
+            - name: CLUSTER_ZONE
+              value: "{{ .Values.kubernetes.zone }}"
+          envFrom:
+            - secretRef:
+                name: {{ template "application.fullname" . }}-mp-token
+          {{- include "application.container.livenessProbe" . | indent 10 }}
+          {{- include "application.container.readinessProbe" . | indent 10 }}
+          {{- include "application.container.resources" . | indent 10 }}
+

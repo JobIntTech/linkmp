@@ -1,0 +1,15 @@
+---
+
+application:
+  name: linkmp
+  image:
+    repository: "us-east1-docker.pkg.dev/jobs-deployment-manager/docker-jobint/jobint/linkmp"
+
+  port: 5000
+
+istio:
+  dnsPrefix: linkmp
+
+deployment:
+  annotations: []
+
