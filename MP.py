@@ -367,7 +367,7 @@ def wh3000():
             else:
                 return jsonify({'error': 'ID de pago no proporcionado en la notificación'}), 400
         else:
-            return jsonify({'error': 'La solicitud no contiene datos JSON'}), 400
+            return jsonify({'error': 'La solicitud no contiene datos JSONN'}), 400
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
