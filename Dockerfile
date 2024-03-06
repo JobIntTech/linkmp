@@ -7,5 +7,8 @@ WORKDIR /opt
 
 RUN pip install flask
 RUN pip install mercadopago
+RUN pip install itsdangerous
+RUN pip install os
+RUN pip install request
 
 CMD ["/bin/sh", "-c", "python /opt/MP.py"]
