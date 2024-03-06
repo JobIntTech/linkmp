@@ -2,6 +2,7 @@ FROM python:3.12.0-alpine
 MAINTAINER Guido Navalesi <guido@jobint.com>
 
 COPY app.py /opt/app.py
+COPY templates /opt/templates
 
 WORKDIR /opt
 
