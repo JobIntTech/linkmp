@@ -74,6 +74,10 @@ def linkmp(payload, access_token, webhook_url):
 def index():
     return render_template('index.html')
 
+@app.route('/holis')
+def holis():
+    return 'holiss'
+
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()  # Obtener los datos del cuerpo de la solicitud en formato JSON
