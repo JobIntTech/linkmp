@@ -23,6 +23,6 @@ spec:
         number: 80
         protocol: HTTP
   selector:
-    istio: ilbgateway
+    istio: ingressgateway
 
 {{- end -}}
