@@ -8,7 +8,7 @@ application:
   port: 5000
 
 istio:
-  dnsPrefix: linkmp
+  dnsPrefix: procesos
 
 deployment:
   annotations: []
