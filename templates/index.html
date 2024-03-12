@@ -4,12 +4,74 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pasarela de Pagos</title>
-  <link rel="stylesheet" href="/static/index.css">
+  <style>
+    body {
+      font-family: Consolas, monospace;
+      background-color: #000;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      color: white;
+    }
+    header a {
+      color: #fff;
+      text-decoration: none;
+      margin-right: 20px;
+    }
+    header a:hover {
+      text-decoration: underline;
+    }
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #333;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+    h1 {
+      color: #fff;
+      margin-top: 0;
+    }
+    p {
+      color: #ccc;
+    }
+
+    .dc {
+      margin-top: 1.5%;
+    }
+    /* Estilo para enlaces */
+    a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #6aff6a; /* Cambio de color al pasar el cursor */
+    }
+  </style>
 </head>
 <body>
   <header>
-    <a href="https://docs.google.com/document/d/1Qvoq_L4HO1Wqm-A6v-yBxv5pbWaWoQrZIgTEf5yXWbQ/edit" target="_blank">Documentacion Link de Pago</a>
-    <a href="https://docs.google.com/document/d/1yP9fnKXRjVBBG7KSFhiyHWX7K12Ee-PCLXtVfDqhHLg/edit" target="_blank">Documentacion ETL BigQuery</a>
+    <h1>Bienvenido a la API de Procesos</h1>
   </header>
+  <main>
+    <div class="dc">
+      <a href="https://docs.google.com/document/d/1Qvoq_L4HO1Wqm-A6v-yBxv5pbWaWoQrZIgTEf5yXWbQ/edit" target="_blank">Documentacion Link de Pago</a>
+    </div>
+    <div class="dc">
+      <a href="https://docs.google.com/document/d/1yP9fnKXRjVBBG7KSFhiyHWX7K12Ee-PCLXtVfDqhHLg/edit" target="_blank">Documentacion ETL BigQuery</a>
+    </div>
+    <p>by cmendoza</p>
+  </main>
 </body>
 </html>

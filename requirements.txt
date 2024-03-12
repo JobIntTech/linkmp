@@ -1,2 +1,0 @@
-Flask==1.1.2
-mercadopago==0.5.0
