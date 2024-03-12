@@ -4,7 +4,7 @@ import os
 import mercadopago
 from flask import Flask, request, jsonify
 from itsdangerous import URLSafeTimedSerializer as Serializer
-from bq import ejecutar_servicio
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'clave123'  # Cambia esto por una clave segura
@@ -79,13 +79,7 @@ def index():
 def holis():
     return 'holiss'
 
-@app.route('/ejecutar_servicio', methods=['GET'])
-def ejecutar_servicio_route():
-    try:
-        ejecutar_servicio()  # Llama a la función que ejecuta el servicio
-        return jsonify({'message': 'El servicio se ejecutó correctamente'}), 200
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+
 
 @app.route('/login', methods=['POST'])
 def login():
