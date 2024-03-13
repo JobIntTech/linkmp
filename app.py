@@ -79,8 +79,6 @@ def index():
 def holis():
     return 'holiss'
 
-
-
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()  # Obtener los datos del cuerpo de la solicitud en formato JSON
