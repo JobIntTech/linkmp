@@ -3,8 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pasarela de Pagos</title>
+  <title>Procesos Jobint</title>
   <style>
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      z-index: 1; /* Asegurar que el header esté encima del iframe */
+    }
+    header h1 {
+      margin-top: 1%;
+      text-align: center;
+    }
+    iframe {
+      width: 100%;
+      position: fixed;
+      height: 85%;
+      top: -4.5%;
+      border: none; /* Eliminar el borde del iframe */
+    }
     body {
       font-family: Consolas, monospace;
       background-color: #000;
@@ -12,32 +32,19 @@
       margin: 0;
       padding: 0;
     }
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 10px 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      color: white;
-    }
-    header a {
-      color: #fff;
-      text-decoration: none;
-      margin-right: 20px;
-    }
-    header a:hover {
-      text-decoration: underline;
-    }
     main {
-      max-width: 800px;
-      margin: 20px auto;
+      margin-top: 82.5vh; /* Ajustar el espacio para el encabezado */
+      display: flex;
+    }
+    .padlink {
+      text-align: center;
+      width: 15%;
       padding: 20px;
       background-color: #333;
       border-radius: 5px;
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-    }
+      max-height: 120px;
+    }   
     h1 {
       color: #fff;
       margin-top: 0;
@@ -58,20 +65,59 @@
     a:hover {
       color: #6aff6a; /* Cambio de color al pasar el cursor */
     }
+
+
+    .dc {
+      margin-top: 1.5%;
+    }
+
   </style>
 </head>
 <body>
   <header>
     <h1>Bienvenido a la API de Procesos</h1>
   </header>
+  <iframe id="documentFrame" src="" allow="fullscreen"></iframe>
   <main>
-    <div class="dc">
-      <a href="https://docs.google.com/document/d/1Qvoq_L4HO1Wqm-A6v-yBxv5pbWaWoQrZIgTEf5yXWbQ/edit" target="_blank">Documentacion Link de Pago</a>
+    <div class="padlink">
+      <div class="dc">
+        <a href="#link-de-pago">Documentacion Link de Pago</a>
+      </div>
     </div>
-    <div class="dc">
-      <a href="https://docs.google.com/document/d/1yP9fnKXRjVBBG7KSFhiyHWX7K12Ee-PCLXtVfDqhHLg/edit" target="_blank">Documentacion ETL BigQuery</a>
+    <div class="padlink">
+      <div class="dc">
+        <a href="#etl-bigquery">Documentacion ETL BigQuery</a>
+      </div>
     </div>
-    <p>by cmendoza</p>
   </main>
+  <p>by cmendoza</p>
+
+  <script>
+    // Función para cargar el contenido del documento en el iframe
+    function cargarDocumento(src) {
+      var iframe = document.getElementById('documentFrame');
+      iframe.src = src;
+    }
+
+    // Función para manejar el enrutamiento
+    function manejarEnrutamiento() {
+      var hash = window.location.hash.substring(1); // Elimina el '#'
+      var src = '';
+
+      // Define el origen del documento según la ruta
+      if (hash === 'link-de-pago') {
+        src = 'https://docs.google.com/document/d/1Qvoq_L4HO1Wqm-A6v-yBxv5pbWaWoQrZIgTEf5yXWbQ/edit';
+      } else if (hash === 'etl-bigquery') {
+        src = 'https://docs.google.com/document/d/1yP9fnKXRjVBBG7KSFhiyHWX7K12Ee-PCLXtVfDqhHLg/edit';
+      }
+
+      // Cargar el documento en el iframe
+      cargarDocumento(src);
+    }
+
+    // Cargar el documento al iniciar la página y cada vez que cambie la ruta
+    window.addEventListener('hashchange', manejarEnrutamiento);
+    manejarEnrutamiento();
+  </script>
 </body>
 </html>
