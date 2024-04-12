@@ -75,6 +75,13 @@ def linkmp(payload, access_token, webhook_url):
 def index():
     return render_template('index.html')
 
+@app.route('/look')
+def look():
+    return render_template('looker.html')
+@app.route('/docs')
+def docs():
+    return render_template('docs.html')
+
 @app.route('/holis')
 def holis():
     return 'holiss'

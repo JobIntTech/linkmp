@@ -6,7 +6,9 @@
   <title>Procesos Jobint</title>
   <style>
     header {
+      position: fixed;
       top: 0;
+      width: 100%;
       background-color: #333;
       color: #fff;
       padding: 10px 20px;
@@ -16,6 +18,13 @@
       margin-top: 1%;
       text-align: center;
     }
+    iframe {
+      width: 100%;
+      position: fixed;
+      height: 85%;
+      top: -4.5%;
+      border: none; /* Eliminar el borde del iframe */
+    }
     body {
       font-family: Consolas, monospace;
       background-color: #000;
@@ -24,11 +33,10 @@
       padding: 0;
     }
     main {
-      margin-top: 2%;
+      margin-top: 82.5vh; /* Ajustar el espacio para el encabezado */
       display: flex;
     }
     .padlink {
-      margin-left: 2%;
       text-align: center;
       width: 15%;
       padding: 20px;
@@ -57,6 +65,8 @@
     a:hover {
       color: #6aff6a; /* Cambio de color al pasar el cursor */
     }
+
+
     .dc {
       margin-top: 1.5%;
     }
@@ -70,37 +80,61 @@
       padding: 10px 20px;
       text-align: center
     }
-
   </style>
 </head>
 <body>
   <header>
     <h1><a href="/">Bienvenido a la API de Procesos</a></h1>
   </header>
+  <iframe id="documentFrame" src="" allow="fullscreen"></iframe>
   <main>
     <div class="padlink">
       <div class="dc">
-        <a href="/draw">Client Journey</a>
+        <a href="#link-de-pago">Documentacion Link de Pago</a>
       </div>
     </div>
     <div class="padlink">
       <div class="dc">
-        <a href="/look">Looker Comercial</a>
+        <a href="#etl-bigquery">Documentacion ETL BigQuery</a>
       </div>
     </div>
     <div class="padlink">
       <div class="dc">
-        <a href="/holis">Formularios Inbound</a>
-      </div>
-    </div>
-    <div class="padlink">
-      <div class="dc">
-        <a href="/docs#link-de-pago">Documentación</a>
+        <a href="#etl-forminbound">Form Inbournd</a>
       </div>
     </div>
   </main>
   <footer>
     <p>by cmendoza</p>
   </footer>
+  <script>
+    // Función para cargar el contenido del documento en el iframe
+    function cargarDocumento(src) {
+      var iframe = document.getElementById('documentFrame');
+      iframe.src = src;
+    }
+
+    // Función para manejar el enrutamiento
+    function manejarEnrutamiento() {
+      var hash = window.location.hash.substring(1); // Elimina el '#'
+      var src = '';
+
+      // Define el origen del documento según la ruta
+      if (hash === 'link-de-pago') {
+        src = 'https://docs.google.com/document/d/1Qvoq_L4HO1Wqm-A6v-yBxv5pbWaWoQrZIgTEf5yXWbQ/edit';
+      } else if (hash === 'etl-bigquery') {
+        src = 'https://docs.google.com/document/d/1yP9fnKXRjVBBG7KSFhiyHWX7K12Ee-PCLXtVfDqhHLg/edit';
+      } else if (hash === 'etl-forminbound') {
+        src = 'https://docs.google.com/document/d/1yP9fnKXRjVBBG7KSFhiyHWX7K12Ee-PCLXtVfDqhHLg/edit';
+      }
+
+      // Cargar el documento en el iframe
+      cargarDocumento(src);
+    }
+
+    // Cargar el documento al iniciar la página y cada vez que cambie la ruta
+    window.addEventListener('hashchange', manejarEnrutamiento);
+    manejarEnrutamiento();
+  </script>
 </body>
 </html>

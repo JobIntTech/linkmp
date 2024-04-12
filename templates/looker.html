@@ -7,6 +7,7 @@
   <style>
     header {
       top: 0;
+      width: 100%;
       background-color: #333;
       color: #fff;
       padding: 10px 20px;
@@ -16,6 +17,11 @@
       margin-top: 1%;
       text-align: center;
     }
+    iframe {
+      width: 100%;
+      height: 100vh;
+      border: none; /* Eliminar el borde del iframe */
+    }
     body {
       font-family: Consolas, monospace;
       background-color: #000;
@@ -23,12 +29,7 @@
       margin: 0;
       padding: 0;
     }
-    main {
-      margin-top: 2%;
-      display: flex;
-    }
     .padlink {
-      margin-left: 2%;
       text-align: center;
       width: 15%;
       padding: 20px;
@@ -57,14 +58,16 @@
     a:hover {
       color: #6aff6a; /* Cambio de color al pasar el cursor */
     }
+
+
     .dc {
       margin-top: 1.5%;
     }
 
     footer {
-      position: fixed;
+      display: flex;
+      justify-content: space-between;
       bottom: 0;
-      width: 100%;
       background-color: #333;
       color: #fff;
       padding: 10px 20px;
@@ -74,33 +77,28 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1><a href="/">Bienvenido a la API de Procesos</a></h1>
-  </header>
-  <main>
-    <div class="padlink">
-      <div class="dc">
-        <a href="/draw">Client Journey</a>
-      </div>
-    </div>
-    <div class="padlink">
-      <div class="dc">
-        <a href="/look">Looker Comercial</a>
-      </div>
-    </div>
-    <div class="padlink">
-      <div class="dc">
-        <a href="/holis">Formularios Inbound</a>
-      </div>
-    </div>
-    <div class="padlink">
-      <div class="dc">
-        <a href="/docs#link-de-pago">Documentación</a>
-      </div>
-    </div>
-  </main>
+  
+  <iframe width="1600" height="950" src="https://lookerstudio.google.com/embed/reporting/ea06f892-fa7e-4890-9bf4-beb1b10a8464/page/p_15m8w427ed" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
   <footer>
+    <p><a href="/">Volver</a></p>      
     <p>by cmendoza</p>
   </footer>
+
+  <script>
+    // Función para ajustar la altura del iframe
+    function ajustarAlturaIframe() {
+      var iframe = document.getElementById('looker-iframe');
+      var alturaDeseada = 2000; // La altura que desees establecer en píxeles
+      
+      // Establecer la altura del iframe
+      iframe.style.height = alturaDeseada + 'px';
+    }
+
+    // Llamamos a la función cuando el documento haya cargado completamente
+    document.addEventListener('DOMContentLoaded', function() {
+      ajustarAlturaIframe();
+    });
+  </script>
+
 </body>
-</html>
+</html> 
