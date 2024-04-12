@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Contacto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif; /* Usar Poppins como la fuente predeterminada */
+    }
+
+    .banner {
+      height: 25vh; /* 25% de la altura del viewport */
+      width: 100%;
+      background: url('https://i.ibb.co/Bg7xrwS/logo.png') center/cover no-repeat; /* Reemplaza 'banner.jpg' con la ruta de tu imagen de fondo */
+    }
+
+    form input[type="text"],
+    form input[type="email"] {
+        width: 95%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        justify-content: center;
+        padding: 20px;
+        text-align: left;
+        width: 40%;
+        background-color: rgba(255, 255, 255, 0.9); /* Fondo semitransparente para mejorar la legibilidad */
+        border-radius: 10px; /* Esquinas redondeadas para el formulario */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin: 0 auto; /* Centrar horizontalmente */
+        margin-top: -5%; /* Subir un 15% de la altura del viewport hacia arriba */
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 10px;
+      border: 1px solid #ccc; /* Añadir un borde de 1 píxel sólido de color gris */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra delgada alrededor de la tarjeta */
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .card img {
+      width: 80px; /* Ajusta el tamaño del logo según tus necesidades */
+      margin-bottom: 10px;
+    }
+
+    .fonty h1 {
+    font-family: 'GT Eesti Display',-apple-system,system-ui,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol',sans-serif;
+    font-weight: 500;
+    font-style: inherit;
+    font-weight: inherit;
+    font-feature-settings: 'calt' 0;
+    color: #333;
+    font-size: 28px;
+    display: block;
+    line-height: 36px;
+    margin-bottom: 6px;
+    word-wrap: break-word;
+    }
+
+    .fonty h2 {
+    font-family: 'GT Eesti Display',-apple-system,system-ui,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol',sans-serif;
+    font-weight: 500;
+    font-style: inherit;
+    font-weight: inherit;
+    font-feature-settings: 'calt' 0;
+    color: #333333;
+    font-size: 18px;
+    line-height: 24px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px; /* Espacio entre el formulario y el botón */
+    }
+
+    .g-recaptcha {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px; /* Espacio entre el formulario y el botón */
+    }
+
+    form input[type="submit"] {
+      margin-top: 3.5%;
+      width: 20%;
+      background-color: #4f4caf;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 15px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    form input[type="submit"]:hover {
+      background-color: #3c3c9a;
+    }
+
+    /* Estilo base para el select */
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+      font-size: 16px;
+      color: #333;
+      cursor: pointer;
+      outline: none;
+    }
+
+    /* Estilo cuando el select está enfocado */
+    select:focus {
+      border-color: #4f4caf;
+      box-shadow: 0 0 5px rgba(79, 76, 175, 0.5);
+    }
+
+    /* Estilo para las opciones del select */
+    select option {
+      background-color: #fff;
+      color: #333;
+    }
+
+    /* Estilo para la opción seleccionada */
+    select option:checked {
+      background-color: #4f4caf;
+      color: #fff;
+    }
+        
+  </style>
+</head>
+<body>
+  <div class="banner"></div>
+  <div class="form-container">
+    <div class="card">
+        <div class="fonty">    
+            <h1>¿Estás en búsqueda de nuevos talentos?</h1>
+            <h2>Iniciá un reclutamiento inteligente. Ahorrá tiempo y dinero seleccionando al candidato ideal gracias al uso de la tecnología.</h2>
+        </div>
+    </div>         
+    <form id: "bumar" method="POST" action="http://127.0.0.1:5000/formulario">
+      <input type=hidden name="retURL" value="https://www.bumeran.com.ar/empresas#productos">
+      <label for="first_name">Nombre</label>
+      <input id="first_name" maxlength="40" name="first_name" size="20" type="text" required /><br>
+      <label for="last_name">Apellido</label>
+      <input id="last_name" maxlength="80" name="last_name" size="20" type="text" required /><br>
+      <label for="email">Email</label>
+      <input id="email" maxlength="80" name="email" size="20" type="email" required /><br>
+      <label for="phone">Teléfono</label>
+      <input id="phone" maxlength="40" name="phone" size="20" type="text" required /><br>            
+      <label for="company">Empresa</label><input  id="company" maxlength="40" name="company" size="20" type="text" /><br>
+      <label for="pais">Pais</label>
+      <select id="pais" name="pais" required>
+        <option value="" disabled selected>Seleccione</option>
+        <option value="Argentina">Argentina</option>
+        <option value="Peru">Perú</option>
+        <option value="Ecuador">Ecuador</option>
+        <option value="Panama">Panamá</option>
+        <option value="Chile">Chile</option>
+        <option value="Mexico">México</option>
+      </select><br>
+      <div class="button-container">
+        <input type="submit" name="submit" value="Enviar">
+      </div>
+      <label for="00N5f00000g36MJ" style="display: none;">Es empresa:</label> 
+      <select id="00N5f00000g36MJ" name="00N5f00000g36MJ" title="Es empresa" style="display: none;">
+          <option value="Empresa" selected>Empresa</option>
+        </select><br>
+      <label for="00N5f00000g36MU" style="display: none;">Organización de Venta:</label>
+      <input id="00N5f00000g36MU" maxlength="255" name="00N5f00000g36MU" size="20" type="text" style="display: none;"><br>
+      <label for="00N5f00000g36MZ" style="display: none;">País de Facturación:</label>
+      <input id="00N5f00000g36MZ" maxlength="255" name="00N5f00000g36MZ" size="20" type="text" style="display: none;"><br>            
+      <label for="Campaign_ID" style="display: none;">Campaign</label>
+      <select id="Campaign_ID" name="Campaign_ID" style="display: none;">
+        <option value="7015f000000pfZE" selected>CH - CAMPAÑA SELECTA</option>
+      </select><br>
+      <label for="lead_source" style="display: none;">Lead Source</label>
+      <select id="lead_source" name="lead_source" style="display: none;">
+          <option value="Portal" selected>Portal</option>
+      </select><br>
+      </form>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var organizacionVentaInput = document.getElementById("00N5f00000g36MU");
+        var paisSelect = document.getElementById("pais");
+
+        paisSelect.addEventListener("change", function() {
+            if (paisSelect.value === "Argentina") {
+                organizacionVentaInput.value = "Jobs - Bumeran - AR";
+            } else {
+                organizacionVentaInput.value = ""; // Limpiar el campo si no es Argentina
+            }
+        });
+    });
+  </script>
+</body>
+</html>

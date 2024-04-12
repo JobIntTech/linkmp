@@ -79,6 +79,10 @@ def index():
 def holis():
     return 'holiss'
 
+@app.route('/draw')
+def draw():
+    return redirect("https://viewer.diagrams.net/?tags=%7B%7D&highlight=0000ff&edit=_blank&layers=1&nav=1&title=Client%20Journey.drawio#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1k0W_lf1EqoHxPbu6j-IgbkTp9VFX9yz4%26export%3Ddownload#%7B%22pageId%22%3A%22C5RBs43oDa-KdzZeNtuy%22%7D")
+
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()  # Obtener los datos del cuerpo de la solicitud en formato JSON
