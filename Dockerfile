@@ -4,6 +4,7 @@ MAINTAINER Guido Navalesi <guido@jobint.com>
 COPY app.py /opt/app.py
 COPY app.py /opt/bq.py
 COPY templates /opt/templates
+COPY static /opt/static
 
 WORKDIR /opt
 
