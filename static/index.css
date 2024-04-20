@@ -1,0 +1,113 @@
+header {
+width: 100%;
+justify-content: space-between;
+top: 0;
+background-color: #090f4f;
+color: #fff;
+z-index: 2; /* Asegurar que el header esté encima del iframe */
+}
+
+#nav {
+display: flex;
+align-items: center;
+justify-content: space-between;
+width: 80%;
+margin-left: 10%;
+}
+
+#title {
+margin-top: 2%;
+}
+
+header h1 {
+margin-top: 1%;
+text-align: center;
+}
+
+header img {
+width: 150px;
+}
+
+body {
+font-family: Consolas, monospace;
+background-color: #000; 
+color: #fff;
+margin: 0;
+padding: 0;
+}
+
+#links {
+display: flex;
+justify-content: space-between;
+width: 60%;
+margin-left: 10%;
+margin-top: 0.5%;
+}
+
+.padlink {
+font-size: 15px;
+text-align: center;
+width: 25%;
+margin-bottom: 0.5%;
+border-radius: 5px;
+max-height: 120px;
+}
+
+h1 {
+color: #fff;
+margin-top: 0;
+}
+p {
+color: #ccc;
+}
+/* Estilo para enlaces */
+a {
+color: #fff;
+text-decoration: none;
+transition: color 0.3s ease;
+}
+a:hover {
+color: #6aff6a; /* Cambio de color al pasar el cursor */
+}
+
+#scroll {
+min-width: 1000px;
+overflow-y: scroll; /* Muestra la barra de desplazamiento siempre */
+scrollbar-width: none; /* Oculta la barra de desplazamiento en Firefox */
+min-height: 100vh;
+height: 100vh;
+}
+
+#scroll::-webkit-scrollbar {
+display: none; /* Oculta la barra de desplazamiento en Chrome, Safari, y Edge */
+}
+
+.scroll-content {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.scroll-content img {
+margin-top: 2%;
+margin-bottom: 2%;
+max-width: 100%;
+height: auto;
+}
+
+iframe {
+margin-left: 10%;
+width: 80%;
+margin-top: 1%;
+border: none; /* Eliminar el borde del iframe */
+overflow: hidden; /* Ocultar la barra de desplazamiento */
+}
+
+footer p {
+bottom: 0;
+margin-top: 1%;
+margin-bottom: 1%;
+width: 100%;
+color: #fff;
+text-align: center
+}
