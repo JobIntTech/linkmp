@@ -152,6 +152,16 @@ def get_webhook_url(org_vta):
     else:
         return None
 
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    # Tu lógica aquí
+    # Por ejemplo, puedes procesar los datos recibidos en el webhook
+    data = request.json
+    
+    # Devuelve una respuesta HTTP 200
+    return jsonify({'message': 'Webhook received successfully'}), 200
+
+
 @app.route('/wh6000', methods=['POST'])
 def wh6000():
     try:
