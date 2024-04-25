@@ -160,14 +160,16 @@ def get_webhook_url(org_vta):
 #     # Devuelve una respuesta HTTP 200
 #     return jsonify({'message': 'Webhook received successfully'}), 200
 
+# Variable global para almacenar el portalcompanyid
+portalcompanyid = None
+
 @app.route('/webhook', methods=['POST'])
 def webhook():
+    global portalcompanyid
     # Verifica que la solicitud sea POST y contiene datos JSON
     if request.method == 'POST' and request.is_json:
         # Obtén los datos JSON de la solicitud
         webhook_data = request.json
-
-        print(webhook_data)
         
         # Verifica si el atributo portalcompanyid está presente en los datos del webhook
         if 'portalcompanyid' in webhook_data:
@@ -183,6 +185,15 @@ def webhook():
     else:
         # Si la solicitud no es POST o no es JSON
         return jsonify({'error': 'Invalid request'}), 400
+
+@app.route('/pcid')
+def show_portalcompanyid():
+    global portalcompanyid
+    # Verifica si portalcompanyid está establecido
+    if portalcompanyid is not None:
+        return f'Portal Company ID: {portalcompanyid}'
+    else:
+        return 'Portal Company ID not set'
 
 
 @app.route('/wh6000', methods=['POST'])
