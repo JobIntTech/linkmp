@@ -154,7 +154,7 @@ def get_webhook_url(org_vta):
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
-    # Tu lógica aquí
+    print("¡Este es un mensaje de print que se registrará en los logs de Google Cloud!")
     # Por ejemplo, puedes registrar que el webhook fue activado
     
     # Devuelve una respuesta HTTP 200
